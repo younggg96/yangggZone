@@ -1,0 +1,22 @@
+{
+  "name": "yangggzone",
+  "version": "1.0.0",
+  "description": "js playground",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/younggg96/yangggZone.git"
+  },
+  "keywords": [
+    "960123"
+  ],
+  "author": "younggg96",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/younggg96/yangggZone/issues"
+  },
+  "homepage": "https://github.com/younggg96/yangggZone#readme"
+}
