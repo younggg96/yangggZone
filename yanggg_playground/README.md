@@ -1,4 +1,4 @@
-# yanggg-playground
+# yanggg_playground
 
 ## Project setup
 ```
