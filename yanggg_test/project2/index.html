@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px -15px 0;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .grid-item {
+        width: 90px;
+        height: 90px;
+        line-height: 88px;
+        text-align: center;
+        margin: 0 15px 15px 0;
+        background: #fff;
+        border: 1px solid #d6d6d6;
+        list-style: none;
+      }
+
+      /* .active {
+        background: #c8ebfb;
+      } */
+
+      .clone-grid-item {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        width: 90px;
+        height: 90px;
+        line-height: 88px;
+        text-align: center;
+        background: #fff;
+        border: 1px solid #d6d6d6;
+        opacity: 0.8;
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="grid">
+      <li class="grid-item">item1</li>
+      <li class="grid-item">item2</li>
+      <li class="grid-item">item3</li>
+      <li class="grid-item">item4</li>
+      <li class="grid-item">item5</li>
+      <li class="grid-item">item6</li>
+      <li class="grid-item">item7</li>
+      <li class="grid-item">item8</li>
+      <li class="grid-item">item9</li>
+      <li class="grid-item">item10</li>
+    </ul>
+    <script src="./index.js"></script>
+  </body>
+</html>
