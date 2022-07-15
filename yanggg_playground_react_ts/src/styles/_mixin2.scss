@@ -4,11 +4,11 @@
     border-radius: $border-raduis;
 }
 
-@mixin button-raduis($border-raduis) {
-    border-radius: $border-raduis / 2;
+@mixin button-raduis($font-size: $btn-font-size, $padding: $btn-padding-y) {
+    border-radius: #{($font-size * $btn-line-height + $padding * 2) / 2 + 1/ 16};
 }
 
-@mixin button-style( $background, $border, $color, $hover-background: lighten($background, 7.5%), $hover-border: lighten($border, 10%), $active-background: darken($background, 7.5%), $active-border: darken($border, 10%), $hover-color: $color) {
+@mixin button-style( $background: $primary, $border: $primary, $color: $white, $hover-background: lighten($background, 7.5%), $hover-border: lighten($border, 7.5%), $active-background: darken($background, 7.5%), $active-border: darken($border, 7.5%), $hover-color: $color) {
     color: $color;
     background: $background;
     border-color: $border;
@@ -28,5 +28,40 @@
         background: unset;
         color: unset;
         border-color: $border-color;
+    }
+}
+
+@mixin button-contained-color($color: $primary) {
+    @include button-style($color, $color, $white);
+}
+
+@mixin button-outlined-color($color: $primary) {
+    box-shadow: none;
+    @include button-style( $white, $color, $color, $color, $white, $color, $white, $white);
+}
+
+@mixin button-ghosted-color($color: $primary) {
+    box-shadow: none;
+    @include button-style( $white, $white, $color, $color, $white, $color, $white, $white);
+}
+
+@mixin button-ripple($background: $gray-200) {
+    .ripple-cover {
+        background: $background;
+    }
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
     }
 }

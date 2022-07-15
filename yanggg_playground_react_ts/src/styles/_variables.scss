@@ -15,7 +15,7 @@ $purple: #6f42c1 !default;
 $pink: #d63384 !default;
 $red: #dc3545 !default;
 $orange: #fd7e14 !default;
-$yellow: #fadb14 !default;
+$yellow: #e9ca03 !default;
 $green: #1ac461 !default;
 $teal: #20c997 !default;
 $cyan: #17a2b8 !default;
@@ -161,6 +161,8 @@ $btn-font-size-sm: $font-size-sm !default;
 $btn-padding-y-lg: 0.5rem !default;
 $btn-padding-x-lg: 1rem !default;
 $btn-font-size-lg: $font-size-lg !default;
+// button default color;
+$button-default-color: $gray-500 !default;
 // 按钮边框
 $btn-border-width: $border-width !default;
 // 按钮其他
@@ -175,14 +177,9 @@ $btn-link-disabled-color: $gray-600 !default;
 $btn-border-radius: $border-radius !default;
 $btn-border-radius-lg: $border-radius-lg !default;
 $btn-border-radius-sm: $border-radius-sm !default;
-// button radius square | round | circle
-$btn-border-radius-square: 0% !default;
-$btn-border-radius-round: 16px !default;
-$btn-border-radius-circle: 50% !default;
-$btn-transition: color 0.15s ease-in-out,
-background-color 0.15s ease-in-out,
-border-color 0.15s ease-in-out,
-box-shadow 0.15s ease-in-out !default;
+// button radius square | round
+$btn-border-radius-square: 0 !default;
+$btn-transition: all 0.15s ease-in-out !default;
 // menu
 $menu-border-width: $border-width !default;
 $menu-border-color: $border-color !default;

@@ -39,36 +39,174 @@
     @include button-style( $white, $border-color, $font-color, $white, $primary, $white, $primary, $primary);
 }
 
+.btn-default.btn-contained {
+    @include button-style( $button-default-color, $white, $black, $button-default-color, $white, $button-default-color, $white, $black);
+}
+
+.btn-default.btn-outlined {
+    box-shadow: none;
+    @include button-style( $white, $border-color, $black, lighten($button-default-color, 20%), $border-color, lighten($button-default-color, 20%), $border-color, $black);
+}
+
+.btn-default.btn-ghosted {
+    box-shadow: none;
+    @include button-style( $white, $white, $black, lighten($button-default-color, 20%), $white, lighten($button-default-color, 20%), $white, $black);
+}
+
+.btn.btn-default.btn-contained.ripple,
+.btn.btn-default.btn-outlined.ripple,
+.btn.btn-default.btn-ghosted.ripple {
+    @include button-ripple($white);
+}
+
 .btn-primary {
-    @include button-style($primary, $primary, $white);
+    @include button-style();
+}
+
+.btn-primary.btn-contained {
+    @include button-style();
+}
+
+.btn-primary.btn-outlined {
+    box-shadow: none;
+    @include button-style( $white, $primary, $primary, $primary, $white, $primary, $white, $white);
+}
+
+.btn-primary.btn-ghosted {
+    box-shadow: none;
+    @include button-style( $white, $white, $primary, $primary, $white, $primary, $white, $white);
+}
+
+.btn-secondary {
+    @include button-style($secondary, $secondary, $white);
+}
+
+.btn-secondary.btn-contained {
+    @include button-contained-color($secondary);
+}
+
+.btn-secondary.btn-outlined {
+    @include button-outlined-color($secondary);
+}
+
+.btn-secondary.btn-ghosted {
+    @include button-ghosted-color($secondary);
 }
 
 .btn-success {
     @include button-style($success, $success, $white);
 }
 
+.btn-success.btn-contained {
+    @include button-contained-color($success);
+}
+
+.btn-success.btn-outlined {
+    @include button-outlined-color($success);
+}
+
+.btn-success.btn-ghosted {
+    @include button-ghosted-color($success);
+}
+
 .btn-info {
     @include button-style($info, $info, $white);
+}
+
+.btn-info.btn-contained {
+    @include button-contained-color($info);
+}
+
+.btn-info.btn-outlined {
+    @include button-outlined-color($info);
+}
+
+.btn-info.btn-ghosted {
+    @include button-ghosted-color($info);
 }
 
 .btn-danger {
     @include button-style($danger, $danger, $white);
 }
 
+.btn-danger.btn-contained {
+    @include button-contained-color($danger);
+}
+
+.btn-danger.btn-outlined {
+    @include button-outlined-color($danger);
+}
+
+.btn-danger.btn-ghosted {
+    @include button-ghosted-color($danger);
+}
+
 .btn-warning {
     @include button-style($warning, $warning, $white);
 }
 
+.btn-warning.btn-contained {
+    @include button-contained-color($warning);
+}
+
+.btn-warning.btn-outlined {
+    @include button-outlined-color($warning);
+}
+
+.btn-warning.btn-ghosted {
+    @include button-ghosted-color($warning);
+}
+
 .btn-round {
-    @include button-size( $btn-padding-y-lg, $btn-padding-x, $btn-font-size, $btn-border-radius-round);
+    @include button-raduis();
+}
+
+.btn-square {
+    border-radius: $btn-border-radius-square;
+}
+
+.btn-round.btn-lg {
+    @include button-raduis($btn-font-size-lg, $btn-padding-y-lg);
+}
+
+.btn-round.btn-sm {
+    @include button-raduis($btn-font-size-sm, $btn-padding-y-sm);
+}
+
+.btn.btn-default.ripple {
+    @include button-ripple($primary);
+}
+
+.btn.ripple {
+    overflow: hidden;
+    @include button-ripple();
+    .ripple-cover {
+        position: absolute;
+        content: "";
+        border-radius: 100%;
+        transform: translate(-50%, -50%);
+        animation: ripple 0.5s linear;
+        pointer-events: none;
+    }
+    @include keyframes(ripple) {
+        0% {
+            width: 0px;
+            height: 0px;
+            opacity: 0.3;
+        }
+        100% {
+            width: 400px;
+            height: 400px;
+            opacity: 0;
+        }
+    }
 }
 
 .btn-link {
     color: $btn-link-color;
     text-decoration: $link-decoration;
     box-shadow: none;
-    &.focus,
-    &:focus,
+    border: none;
     &:hover {
         color: $btn-link-hover-color;
         text-decoration: $link-hover-decoration;

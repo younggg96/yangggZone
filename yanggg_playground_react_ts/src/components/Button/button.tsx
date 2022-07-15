@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
 
 export enum ButtonSize {
@@ -6,28 +6,35 @@ export enum ButtonSize {
   Small = "sm",
 }
 
-export enum ButtonType {
+export enum ButtonColor {
   Primary = "primary",
+  Secondary = "secondary",
   Default = "default",
   Success = "success",
   Danger = "danger",
   Warning = "warning",
   Info = "info",
-  Link = "link",
 }
 
 export enum ButtonAppearance {
   Round = "round",
   Square = "square",
-  Circle = "circle"
 }
 
+export enum ButtonVariant {
+  Contained = "contained",
+  Outlined = "outlined",
+  Ghosted = "ghosted"
+}
 interface BaseButtonProps {
   className?: string;
   disabled?: boolean;
   size?: ButtonSize;
+  noRipple?: boolean;
   appearance?: ButtonAppearance;
-  btnType?: ButtonType;
+  color?: ButtonColor;
+  link?: boolean;
+  variant?: ButtonVariant;
   children: React.ReactNode;
   href?: string;
 }
@@ -42,20 +49,50 @@ const Button: React.FC<ButtonProps> = ({
   className,
   disabled,
   size,
+  noRipple,
   appearance,
-  btnType,
+  color,
+  link,
+  variant,
   children,
   href,
   ...restProps
 }) => {
   const classes = classNames("btn", {
-    [`btn-${btnType}`]: btnType,
+    disabled: link && disabled,
+    ripple: !noRipple,
     [`btn-${size}`]: size,
     [`btn-${appearance}`]: appearance,
-    className,
-    disabled: btnType === ButtonType.Link && disabled,
+    "btn-link": link,
+    [`btn-${variant}`]: variant,
+    [`btn-${color}`]: color,
+    [`${className}`]: className
   });
-  if (btnType === ButtonType.Link && href) {
+
+  const btn = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    const cur = btn?.current;
+    const clickRippleHandler = (e: MouseEvent) => {
+      const element = e.currentTarget as HTMLElement;
+      let left = e.pageX - element.offsetLeft;
+      let top = e.pageY - element.offsetTop;
+      let ripple = document.createElement("span");
+      ripple.classList.add("ripple-cover");
+      ripple.style.left = left + "px";
+      ripple.style.top = top + "px";
+      element.appendChild(ripple);
+      setTimeout(() => {
+        ripple.remove();
+      }, 50000);
+    };
+    if (!noRipple && !disabled) {
+      cur?.addEventListener("click", clickRippleHandler);
+    }
+    return () => cur?.removeEventListener("click", clickRippleHandler);
+  }, []);
+
+  if (link && href) {
     return (
       <a className={classes} href={href} {...restProps}>
         {children}
@@ -63,7 +100,7 @@ const Button: React.FC<ButtonProps> = ({
     );
   } else {
     return (
-      <button className={classes} disabled={disabled} {...restProps}>
+      <button className={classes} disabled={disabled} ref={btn} {...restProps}>
         {children}
       </button>
     );
@@ -72,7 +109,8 @@ const Button: React.FC<ButtonProps> = ({
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default,
+  color: ButtonColor.Default,
+  noRipple: false,
 };
 
 export default Button;

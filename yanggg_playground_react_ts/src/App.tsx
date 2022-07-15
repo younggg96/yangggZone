@@ -1,52 +1,75 @@
 import Button, {
-  ButtonType,
+  ButtonColor,
   ButtonSize,
   ButtonAppearance,
+  ButtonVariant,
 } from "./components/Button/button";
 
 function App() {
   return (
     <div className="App">
       <h1>Button</h1>
-      <h4>Button Types</h4>
+      <h4>Variant</h4>
       <div className="buttons">
-        <Button btnType={ButtonType.Default}>Default Button</Button>
-        <Button btnType={ButtonType.Primary}>Primary Button</Button>
-        <Button btnType={ButtonType.Info} disabled>
-          Info Button
+        <Button variant={ButtonVariant.Contained}>
+          Contained Button
         </Button>
-        <Button btnType={ButtonType.Success}>Success Button</Button>
-        <Button btnType={ButtonType.Danger}>Danger Button</Button>
-        <Button btnType={ButtonType.Warning}>Warning Button</Button>
+        <Button variant={ButtonVariant.Outlined}>Outlined Button</Button>
+        <Button variant={ButtonVariant.Ghosted}>
+          Ghosted Button
+        </Button>
       </div>
-      <h4>Button Sizes</h4>
+      <h4>Colors</h4>
       <div className="buttons">
-        <Button>Default Button</Button>
+        <Button color={ButtonColor.Default}>Default Button</Button>
+        <Button color={ButtonColor.Primary}>Primary Button</Button>
+        <Button color={ButtonColor.Secondary}>Secondary Button</Button>
+        <Button color={ButtonColor.Info}>Info Button</Button>
+        <Button color={ButtonColor.Success}>Success Button</Button>
+        <Button color={ButtonColor.Danger}>Danger Button</Button>
+        <Button color={ButtonColor.Warning}>Warning Button</Button>
+      </div>
+      <h4>Sizes</h4>
+      <div className="buttons">
         <Button size={ButtonSize.Small}>Small Button</Button>
+        <Button>Default Button</Button>
         <Button size={ButtonSize.Large}>Large Button</Button>
       </div>
-      <h4>Button Disabled</h4>
+      <h4>Disabled</h4>
       <div className="buttons">
         <Button>Default Button</Button>
         <Button disabled>Default Button</Button>
       </div>
-      <h4>Button Links</h4>
+      <h4>Links</h4>
       <div className="buttons">
-        <Button btnType={ButtonType.Link} href="#">
+        <Button link href="#">
           Link
         </Button>
-        <Button btnType={ButtonType.Link} href="#" disabled>
+        <Button link href="#" disabled>
           Disabled Link
         </Button>
       </div>
-      <h4>Button Appearance</h4>
+      <h4>Appearance</h4>
       <div className="buttons">
-        <Button
-          btnType={ButtonType.Default}
-          appearance={ButtonAppearance.Round}
-        >
-          Default Button
+        <span>Round:</span>
+        <Button size={ButtonSize.Small} appearance={ButtonAppearance.Round}>
+          Round Button
         </Button>
+        <Button appearance={ButtonAppearance.Round}>Round Button</Button>
+        <Button size={ButtonSize.Large} appearance={ButtonAppearance.Round}>
+          Round Button
+        </Button>
+      </div>
+      <div className="buttons">
+        <span>Square:</span>
+        <Button appearance={ButtonAppearance.Square}>Square Button</Button>
+      </div>
+      <h4>Ripple</h4>
+      <div className="buttons">
+        <span>Default Ripple:</span>
+        <Button>No Ripple Button</Button>
+        <span>Disabled Ripple:</span>
+        <Button noRipple>No Ripple Button</Button>
       </div>
     </div>
   );
