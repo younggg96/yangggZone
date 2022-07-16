@@ -54,9 +54,33 @@
 }
 
 .btn.btn-default.btn-contained.ripple,
-.btn.btn-default.btn-outlined.ripple,
-.btn.btn-default.btn-ghosted.ripple {
+.btn.btn-primary.btn-contained.ripple,
+.btn.btn-secondary.btn-contained.ripple,
+.btn.btn-info.btn-contained.ripple,
+.btn.btn-success.btn-contained.ripple,
+.btn.btn-danger.btn-contained.ripple,
+.btn.btn-warning.btn-contained.ripple {
     @include button-ripple($white);
+}
+
+.btn.btn-default.btn-ghosted.ripple,
+.btn.btn-primary.btn-ghosted.ripple,
+.btn.btn-secondary.btn-ghosted.ripple,
+.btn.btn-info.btn-ghosted.ripple,
+.btn.btn-success.btn-ghosted.ripple,
+.btn.btn-danger.btn-ghosted.ripple,
+.btn.btn-warning.btn-ghosted.ripple {
+    @include button-ripple($white);
+}
+
+.btn.btn-default.btn-outlined.ripple,
+.btn.btn-primary.btn-outlined.ripple,
+.btn.btn-secondary.btn-outlined.ripple,
+.btn.btn-info.btn-outlined.ripple,
+.btn.btn-success.btn-outlined.ripple,
+.btn.btn-danger.btn-outlined.ripple,
+.btn.btn-warning.btn-outlined.ripple {
+    @include button-ripple($gray-500);
 }
 
 .btn-primary {
@@ -64,17 +88,15 @@
 }
 
 .btn-primary.btn-contained {
-    @include button-style();
+    @include button-contained-color($primary);
 }
 
 .btn-primary.btn-outlined {
-    box-shadow: none;
-    @include button-style( $white, $primary, $primary, $primary, $white, $primary, $white, $white);
+    @include button-outlined-color($primary);
 }
 
 .btn-primary.btn-ghosted {
-    box-shadow: none;
-    @include button-style( $white, $white, $primary, $primary, $white, $primary, $white, $white);
+    @include button-ghosted-color($primary);
 }
 
 .btn-secondary {
@@ -206,6 +228,7 @@
     color: $btn-link-color;
     text-decoration: $link-decoration;
     box-shadow: none;
+    background: unset;
     border: none;
     &:hover {
         color: $btn-link-hover-color;

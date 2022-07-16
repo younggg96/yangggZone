@@ -37,12 +37,12 @@
 
 @mixin button-outlined-color($color: $primary) {
     box-shadow: none;
-    @include button-style( $white, $color, $color, $color, $white, $color, $white, $white);
+    @include button-style($white, $color, $color, lighten($color, 50%), $color, lighten($color, 50%), $color, $color);
 }
 
 @mixin button-ghosted-color($color: $primary) {
     box-shadow: none;
-    @include button-style( $white, $white, $color, $color, $white, $color, $white, $white);
+    @include button-style($white, $white, $color, $color, $white, $color, $white, $white);
 }
 
 @mixin button-ripple($background: $gray-200) {

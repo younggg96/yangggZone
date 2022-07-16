@@ -11,11 +11,11 @@ function App() {
       <h1>Button</h1>
       <h4>Variant</h4>
       <div className="buttons">
-        <Button variant={ButtonVariant.Contained}>
+        <Button variant={ButtonVariant.Contained} color={ButtonColor.Info}>
           Contained Button
         </Button>
-        <Button variant={ButtonVariant.Outlined}>Outlined Button</Button>
-        <Button variant={ButtonVariant.Ghosted}>
+        <Button variant={ButtonVariant.Outlined} color={ButtonColor.Info}>Outlined Button</Button>
+        <Button variant={ButtonVariant.Ghosted} color={ButtonColor.Info}>
           Ghosted Button
         </Button>
       </div>
