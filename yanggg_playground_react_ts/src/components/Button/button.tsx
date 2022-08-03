@@ -84,7 +84,7 @@ const Button: React.FC<ButtonProps> = ({
       element.appendChild(ripple);
       setTimeout(() => {
         ripple.remove();
-      }, 50000);
+      }, 500);
     };
     if (!noRipple && !disabled) {
       cur?.addEventListener("click", clickRippleHandler);

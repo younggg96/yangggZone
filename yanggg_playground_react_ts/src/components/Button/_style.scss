@@ -80,7 +80,7 @@
 .btn.btn-success.btn-outlined.ripple,
 .btn.btn-danger.btn-outlined.ripple,
 .btn.btn-warning.btn-outlined.ripple {
-    @include button-ripple($gray-500);
+    @include button-ripple($gray-400);
 }
 
 .btn-primary {
