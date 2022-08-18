@@ -1,0 +1,71 @@
+.g-menu {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 30px;
+    // border-bottom: $menu-border-width solid $menu-border-color;
+    // box-shadow: $menu-box-shadow;
+    gap: 1rem;
+    .menu-item {
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0%;
+            bottom: 0px;
+            width: 0%;
+            height: 3px;
+            background: $menu-item-active-color;
+        }
+        &:hover,
+        &:focus {
+            color: $menu-item-active-color;
+            text-decoration: none;
+        }
+        &.disabled {
+            color: $menu-item-disabled-color;
+            pointer-events: none;
+            cursor: default;
+        }
+        &.active {
+            color: $menu-item-active-color;
+        }
+        &.active::after,
+        &:hover::after {
+            transition: $menu-transition;
+            color: $menu-item-active-color;
+            left: 0%;
+            width: 100%;
+        }
+    }
+}
+
+.g-menu.vertical {
+    flex-direction: column;
+    gap: .5rem;
+    .menu-item {
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0%;
+            top: 0px;
+            width: 3px;
+            height: 0%;
+            background: $menu-item-active-color;
+        }
+        &.active::after,
+        &:hover::after {
+            content: "";
+            position: absolute;
+            left: 0%;
+            top: 0px;
+            width: 3px;
+            height: 100%;
+            background: $menu-item-active-color;
+        }
+    }
+}

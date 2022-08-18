@@ -80,9 +80,16 @@ function App() {
       <section>
         <h1>Menu</h1>
         <h4>Menu</h4>
-        <Menu defaultIndex={0} onSelect={(index) => {alert(index)}}>
-          <MenuItem index={0}>link 0 </MenuItem>
-          <MenuItem index={1}>link 1 </MenuItem>
+        <Menu
+          defaultIndex={0}
+          mode="vertical"
+          onSelect={(index) => {
+            alert(index);
+          }}
+        >
+          <MenuItem>link 0 </MenuItem>
+          <MenuItem>link 1 </MenuItem>
+          <MenuItem disabled>link 1 </MenuItem>
         </Menu>
       </section>
     </div>
