@@ -10,6 +10,7 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 $blue: #0d6efd !default;
+$lightBlue: #81b3ff1b !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #d63384 !default;
@@ -191,6 +192,7 @@ border-color 0.15s ease-in-out !default;
 $menu-item-padding-y: 0.5rem !default;
 $menu-item-padding-x: 1rem !default;
 $menu-item-active-color: $primary !default;
+$menu-item-active-bg-color: $lightBlue !default;
 $menu-item-active-border-width: 2px !default;
 $menu-item-disabled-color: $gray-600 !default;
 //sub-menu

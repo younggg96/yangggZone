@@ -4,10 +4,10 @@
     list-style: none;
     padding-left: 0;
     margin-bottom: 30px;
-    // border-bottom: $menu-border-width solid $menu-border-color;
-    // box-shadow: $menu-box-shadow;
     gap: 1rem;
+    box-shadow: $submenu-box-shadow;
     .menu-item {
+        box-sizing: border-box;
         padding: $menu-item-padding-y $menu-item-padding-x;
         cursor: pointer;
         user-select: none;
@@ -42,16 +42,63 @@
             width: 100%;
         }
     }
+    .menu-item.submenu-item {
+        .submenu-title {
+            text-align: center;
+            margin: unset;
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0%;
+                bottom: 0px;
+                width: 0%;
+                height: 3px;
+                background: $menu-item-active-color;
+            }
+        }
+        .g-submenu {
+            list-style: none;
+            padding-left: unset;
+            position: absolute;
+            top: 44px;
+            left: 0px;
+            border: 1px solid #ddd;
+            box-shadow: $submenu-box-shadow;
+            .menu-item {
+                padding: $menu-item-padding-y $menu-item-padding-x;
+                cursor: pointer;
+                color: $body-color;
+                &:hover,
+                &:focus {
+                    color: $menu-item-active-color;
+                    text-decoration: none;
+                }
+            }
+            .menu-item::after {
+                display: none;
+            }
+        }
+    }
+    .submenu-item:hover.submenu-title::after {
+        transition: $menu-transition;
+        color: $menu-item-active-color;
+        left: 0%;
+        width: 100%;
+    }
 }
 
 .g-menu.vertical {
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
     .menu-item {
+        &.active {
+            color: $menu-item-active-color;
+            background-color: $menu-item-active-bg-color;
+        }
         &::after {
             content: "";
             position: absolute;
-            left: 0%;
+            left: 0px;
             top: 0px;
             width: 3px;
             height: 0%;
@@ -61,11 +108,86 @@
         &:hover::after {
             content: "";
             position: absolute;
-            left: 0%;
+            left: 0px;
             top: 0px;
             width: 3px;
             height: 100%;
             background: $menu-item-active-color;
         }
+    }
+    .menu-item.submenu-item {
+        .submenu-title {
+            text-align: left;
+            margin-bottom: 0.5rem;
+            &::after {
+                transition: $menu-transition;
+                content: "";
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 3px;
+                height: 0%;
+                background: $menu-item-active-color;
+            }
+            &.active::after,
+            &:hover::after {
+                content: "";
+                position: absolute;
+                left: 0po;
+                top: 0px;
+                width: 3px;
+                height: 40px;
+                background: $menu-item-active-color;
+            }
+        }
+        .g-submenu {
+            list-style: none;
+            padding-left: unset;
+            position: unset;
+            top: unset;
+            left: unset;
+            box-shadow: unset;
+            border: unset;
+            .menu-item {
+                padding: $menu-item-padding-y $menu-item-padding-x;
+                cursor: pointer;
+                color: $body-color;
+                &:hover,
+                &:focus {
+                    color: $menu-item-active-color;
+                    text-decoration: none;
+                }
+            }
+            .menu-item::after {
+                display: none;
+            }
+        }
+        &::after {
+            display: none;
+        }
+    }
+}
+
+.g-submenu {
+    display: none;
+}
+
+.g-submenu.opened {
+    display: block;
+    z-index: 99;
+    background: white;
+    width: 120px;
+    transition: $menu-transition;
+    animation: ySlide 0.15s forwards;
+}
+
+@keyframes ySlide {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
     }
 }

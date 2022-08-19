@@ -6,6 +6,7 @@ import Button, {
 } from "./components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
+import SubMenu from "./components/Menu/submenu";
 
 function App() {
   return (
@@ -79,16 +80,66 @@ function App() {
       </section>
       <section>
         <h1>Menu</h1>
-        <h4>Menu</h4>
+        <h4>Menu horizontal</h4>
         <Menu
-          defaultIndex={0}
+          defaultIndex="0"
+          mode="horizontal"
+          onSelect={(index) => {
+            alert(index);
+          }}
+          defaultOpenSubMenus={['2', '3']}
+        >
+          <MenuItem>link 0 </MenuItem>
+          <MenuItem>link 1 </MenuItem>
+          <SubMenu title="link2">
+            <MenuItem>link 3 </MenuItem>
+            <MenuItem>link 4 </MenuItem>
+          </SubMenu>
+          <SubMenu title="link5">
+            <MenuItem>link 6 </MenuItem>
+            <MenuItem>link 7 </MenuItem>
+          </SubMenu>
+          <MenuItem disabled>link 1 </MenuItem>
+        </Menu>
+        <h4>Menu vertical</h4>
+        <Menu
+          defaultIndex="0"
           mode="vertical"
           onSelect={(index) => {
             alert(index);
           }}
+          defaultOpenSubMenus={['2', '3']}
         >
           <MenuItem>link 0 </MenuItem>
           <MenuItem>link 1 </MenuItem>
+          <SubMenu title="link2">
+            <MenuItem>link 3 </MenuItem>
+            <MenuItem>link 4 </MenuItem>
+          </SubMenu>
+          <SubMenu title="link5">
+            <MenuItem>link 6 </MenuItem>
+            <MenuItem>link 7 </MenuItem>
+          </SubMenu>
+          <MenuItem disabled>link 1 </MenuItem>
+        </Menu>
+        <Menu
+          defaultIndex="0"
+          mode="vertical"
+          onSelect={(index) => {
+            alert(index);
+          }}
+          defaultOpenSubMenus={['2', '3']}
+        >
+          <MenuItem>link 0 </MenuItem>
+          <MenuItem>link 1 </MenuItem>
+          <SubMenu title="link2">
+            <MenuItem>link 3 </MenuItem>
+            <MenuItem>link 4 </MenuItem>
+          </SubMenu>
+          <SubMenu title="link5">
+            <MenuItem>link 6 </MenuItem>
+            <MenuItem>link 7 </MenuItem>
+          </SubMenu>
           <MenuItem disabled>link 1 </MenuItem>
         </Menu>
       </section>
