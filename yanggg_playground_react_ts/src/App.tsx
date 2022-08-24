@@ -4,9 +4,15 @@ import Button, {
   ButtonAppearance,
   ButtonVariant,
 } from "./components/Button/button";
+import Icon from "./components/Icon/icon";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/submenu";
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
+
 
 function App() {
   return (
@@ -122,6 +128,7 @@ function App() {
           </SubMenu>
           <MenuItem disabled>link 1 </MenuItem>
         </Menu>
+        <Icon theme="primary" icon="spinner" size="3x" spin></Icon>
       </section>
     </div>
   );
