@@ -122,26 +122,6 @@ function App() {
           </SubMenu>
           <MenuItem disabled>link 1 </MenuItem>
         </Menu>
-        <Menu
-          defaultIndex="0"
-          mode="vertical"
-          onSelect={(index) => {
-            alert(index);
-          }}
-          defaultOpenSubMenus={['2', '3']}
-        >
-          <MenuItem>link 0 </MenuItem>
-          <MenuItem>link 1 </MenuItem>
-          <SubMenu title="link2">
-            <MenuItem>link 3 </MenuItem>
-            <MenuItem>link 4 </MenuItem>
-          </SubMenu>
-          <SubMenu title="link5">
-            <MenuItem>link 6 </MenuItem>
-            <MenuItem>link 7 </MenuItem>
-          </SubMenu>
-          <MenuItem disabled>link 1 </MenuItem>
-        </Menu>
       </section>
     </div>
   );
