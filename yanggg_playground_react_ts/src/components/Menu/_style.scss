@@ -1,184 +1,203 @@
 .g-menu {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 30px;
-    gap: 1rem;
-    box-shadow: $submenu-box-shadow;
-    .menu-item {
-        box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 30px;
+  gap: 1rem;
+  box-shadow: $submenu-box-shadow;
+  .menu-item {
+    box-sizing: border-box;
+    padding: $menu-item-padding-y $menu-item-padding-x;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0%;
+      bottom: 0px;
+      width: 0%;
+      height: 3px;
+      background: $menu-item-active-color;
+    }
+    &:hover,
+    &:focus {
+      color: $menu-item-active-color;
+      text-decoration: none;
+    }
+    &.disabled {
+      color: $menu-item-disabled-color;
+      pointer-events: none;
+      cursor: default;
+    }
+    &.active {
+      color: $menu-item-active-color;
+    }
+    &.active::after,
+    &:hover::after {
+      transition: $menu-transition;
+      color: $menu-item-active-color;
+      left: 0%;
+      width: 100%;
+    }
+  }
+  .menu-item.submenu-item {
+    .submenu-title {
+      text-align: center;
+      margin: unset;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0%;
+        bottom: 0px;
+        width: 0%;
+        height: 3px;
+        background: $menu-item-active-color;
+      }
+      .arrow-icon {
+        transition: transform 0.25s ease-in-out;
+        margin-left: 6px;
+      }
+      &:hover {
+        .arrow-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .vertical {
+      .arrow-icon {
+        transform: rotate(0deg) !important;
+      }
+    }
+    .vertical.is-opened {
+      .arrow-icon {
+        transform: rotate(180deg) !important;
+      }
+    }
+    .g-submenu {
+      list-style: none;
+      padding-left: unset;
+      position: absolute;
+      top: 44px;
+      left: 0px;
+      border: 1px solid #ddd;
+      box-shadow: $submenu-box-shadow;
+      .menu-item {
         padding: $menu-item-padding-y $menu-item-padding-x;
         cursor: pointer;
-        user-select: none;
-        position: relative;
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0%;
-            bottom: 0px;
-            width: 0%;
-            height: 3px;
-            background: $menu-item-active-color;
-        }
+        color: $body-color;
         &:hover,
         &:focus {
-            color: $menu-item-active-color;
-            text-decoration: none;
+          color: $menu-item-active-color;
+          text-decoration: none;
         }
-        &.disabled {
-            color: $menu-item-disabled-color;
-            pointer-events: none;
-            cursor: default;
-        }
-        &.active {
-            color: $menu-item-active-color;
-        }
-        &.active::after,
-        &:hover::after {
-            transition: $menu-transition;
-            color: $menu-item-active-color;
-            left: 0%;
-            width: 100%;
-        }
+      }
+      .menu-item::after {
+        display: none;
+      }
     }
-    .menu-item.submenu-item {
-        .submenu-title {
-            text-align: center;
-            margin: unset;
-            &::after {
-                content: "";
-                position: absolute;
-                left: 0%;
-                bottom: 0px;
-                width: 0%;
-                height: 3px;
-                background: $menu-item-active-color;
-            }
-        }
-        .g-submenu {
-            list-style: none;
-            padding-left: unset;
-            position: absolute;
-            top: 44px;
-            left: 0px;
-            border: 1px solid #ddd;
-            box-shadow: $submenu-box-shadow;
-            .menu-item {
-                padding: $menu-item-padding-y $menu-item-padding-x;
-                cursor: pointer;
-                color: $body-color;
-                &:hover,
-                &:focus {
-                    color: $menu-item-active-color;
-                    text-decoration: none;
-                }
-            }
-            .menu-item::after {
-                display: none;
-            }
-        }
-    }
-    .submenu-item:hover.submenu-title::after {
-        transition: $menu-transition;
-        color: $menu-item-active-color;
-        left: 0%;
-        width: 100%;
-    }
+  }
+  .submenu-item:hover.submenu-title::after {
+    transition: $menu-transition;
+    color: $menu-item-active-color;
+    left: 0%;
+    width: 100%;
+  }
 }
 
 .g-menu.vertical {
-    flex-direction: column;
-    gap: 0.5rem;
-    .menu-item {
-        &.active {
-            color: $menu-item-active-color;
-            background-color: $menu-item-active-bg-color;
-        }
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 3px;
-            height: 0%;
-            background: $menu-item-active-color;
-        }
-        &.active::after,
-        &:hover::after {
-            content: "";
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            width: 3px;
-            height: 100%;
-            background: $menu-item-active-color;
-        }
+  flex-direction: column;
+  gap: 0.5rem;
+  .menu-item {
+    &.active {
+      color: $menu-item-active-color;
+      background-color: $menu-item-active-bg-color;
     }
-    .menu-item.submenu-item {
-        .submenu-title {
-            text-align: left;
-            margin-bottom: 0.5rem;
-            &::after {
-                transition: $menu-transition;
-                content: "";
-                position: absolute;
-                left: 0px;
-                top: 0px;
-                width: 3px;
-                height: 0%;
-                background: $menu-item-active-color;
-            }
-            &.active::after,
-            &:hover::after {
-                content: "";
-                position: absolute;
-                left: 0po;
-                top: 0px;
-                width: 3px;
-                height: 40px;
-                background: $menu-item-active-color;
-            }
-        }
-        .g-submenu {
-            list-style: none;
-            padding-left: unset;
-            position: unset;
-            top: unset;
-            left: unset;
-            box-shadow: unset;
-            border: unset;
-            .menu-item {
-                padding: $menu-item-padding-y $menu-item-padding-x;
-                cursor: pointer;
-                color: $body-color;
-                &:hover,
-                &:focus {
-                    color: $menu-item-active-color;
-                    text-decoration: none;
-                }
-            }
-            .menu-item::after {
-                display: none;
-            }
-        }
-        &::after {
-            display: none;
-        }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 3px;
+      height: 0%;
+      background: $menu-item-active-color;
     }
+    &.active::after,
+    &:hover::after {
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 3px;
+      height: 100%;
+      background: $menu-item-active-color;
+    }
+  }
+  .menu-item.submenu-item {
+    .submenu-title {
+      text-align: left;
+      margin-bottom: 0.5rem;
+      &::after {
+        transition: $menu-transition;
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 3px;
+        height: 0%;
+        background: $menu-item-active-color;
+      }
+      &.active::after,
+      &:hover::after {
+        content: "";
+        position: absolute;
+        left: 0po;
+        top: 0px;
+        width: 3px;
+        height: 40px;
+        background: $menu-item-active-color;
+      }
+    }
+    .g-submenu {
+      list-style: none;
+      padding-left: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+      box-shadow: unset;
+      border: unset;
+      .menu-item {
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        cursor: pointer;
+        color: $body-color;
+        &:hover,
+        &:focus {
+          color: $menu-item-active-color;
+          text-decoration: none;
+        }
+      }
+      .menu-item::after {
+        display: none;
+      }
+    }
+    &::after {
+      display: none;
+    }
+  }
 }
 
 .g-submenu {
-    display: none;
+  display: none;
 }
 
 .g-submenu.opened {
-    display: block;
-    z-index: 99;
-    background: white;
-    width: 120px;
-    transition: $menu-transition;
-    animation: ySlide 0.15s forwards;
+  display: block;
+  z-index: 99;
+  background: white;
+  width: 120px;
+  transition: $menu-transition;
+  animation: ySlide 0.15s forwards;
 }
 
 @keyframes ySlide {

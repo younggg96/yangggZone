@@ -5,8 +5,10 @@ import React, {
   useState,
 } from "react";
 import classNames from "classnames";
-import { MenuContext, MenuProps } from "./menu";
+import { MenuContext } from "./menu";
 import { MenuItemProps } from "./menuItem";
+import { Transition } from "react-transition-group";
+import Icon from "../Icon/icon";
 
 export interface SubMenuProps {
   index?: string;
@@ -24,12 +26,14 @@ const SubMenu: React.FC<SubMenuProps> = ({
   const context = useContext(MenuContext);
   const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
   const isOpend =
-  index && context.mode === "vertical"
-    ? openedSubMenus.includes(index)
-    : false;
+    index && context.mode === "vertical"
+      ? openedSubMenus.includes(index)
+      : false;
   const [menuOpen, setMenuOpen] = useState(isOpend);
   const classes = classNames("menu-item submenu-item", className, {
     active: context.index === index,
+    opened: menuOpen,
+    verticval: context.mode === "vertical",
   });
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -43,6 +47,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
       setMenuOpen(toggle);
     }, 100);
   };
+
   const clickEvents =
     context.mode === "vertical"
       ? {
@@ -77,12 +82,17 @@ const SubMenu: React.FC<SubMenuProps> = ({
         );
       }
     });
-    return <ul className={subMenuClasses}>{childrenComponent}</ul>;
+    return (
+      <Transition in={menuOpen} timeout={300} animation="zoom-in-top">
+        <ul className={subMenuClasses}>{childrenComponent}</ul>
+      </Transition>
+    );
   };
   return (
     <li key={index} className={classes} onClick={handleClick} {...hoverEvents}>
       <p className="submenu-title" {...clickEvents}>
         {title}
+        <Icon icon="angle-down" className="arrow-icon"/>
       </p>
       {renderChildren()}
     </li>
