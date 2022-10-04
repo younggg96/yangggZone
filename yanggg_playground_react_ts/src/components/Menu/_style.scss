@@ -196,17 +196,4 @@
   z-index: 99;
   background: white;
   width: 120px;
-  transition: $menu-transition;
-  animation: ySlide 0.15s forwards;
-}
-
-@keyframes ySlide {
-    from {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0px);
-        opacity: 1;
-    }
 }

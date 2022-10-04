@@ -8,15 +8,16 @@ import Icon from "./components/Icon/icon";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/submenu";
+import Input from "./components/Input/input";
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-library.add(fas)
-
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+library.add(fas);
 
 function App() {
   return (
     <div className="App">
+      {/* Button */}
       <section>
         <h1>Button</h1>
         <h4>Variant</h4>
@@ -84,6 +85,7 @@ function App() {
           <Button noRipple>No Ripple Button</Button>
         </div>
       </section>
+      {/* Menu */}
       <section>
         <h1>Menu</h1>
         <h4>Menu horizontal</h4>
@@ -93,7 +95,7 @@ function App() {
           onSelect={(index) => {
             alert(index);
           }}
-          defaultOpenSubMenus={['2', '3']}
+          defaultOpenSubMenus={["2", "3"]}
         >
           <MenuItem>link 0 </MenuItem>
           <MenuItem>link 1 </MenuItem>
@@ -114,7 +116,7 @@ function App() {
           onSelect={(index) => {
             alert(index);
           }}
-          defaultOpenSubMenus={['2', '3']}
+          defaultOpenSubMenus={["2", "3"]}
         >
           <MenuItem>link 0 </MenuItem>
           <MenuItem>link 1 </MenuItem>
@@ -129,6 +131,11 @@ function App() {
           <MenuItem disabled>link 1 </MenuItem>
         </Menu>
         <Icon theme="primary" icon="spinner" size="3x" spin></Icon>
+      </section>
+      {/* Input */}
+      <section>
+        <h1>Input</h1>
+        <Input size="lg"/>
       </section>
     </div>
   );

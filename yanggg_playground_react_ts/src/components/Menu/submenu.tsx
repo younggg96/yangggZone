@@ -7,7 +7,7 @@ import React, {
 import classNames from "classnames";
 import { MenuContext } from "./menu";
 import { MenuItemProps } from "./menuItem";
-import { Transition } from "react-transition-group";
+import Transition from "../Transition/transition";
 import Icon from "../Icon/icon";
 
 export interface SubMenuProps {
@@ -83,7 +83,11 @@ const SubMenu: React.FC<SubMenuProps> = ({
       }
     });
     return (
-      <Transition in={menuOpen} timeout={300} animation="zoom-in-top">
+      <Transition
+        in={menuOpen}
+        timeout={300}
+        animation="zoom-in-right"
+      >
         <ul className={subMenuClasses}>{childrenComponent}</ul>
       </Transition>
     );
@@ -92,7 +96,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
     <li key={index} className={classes} onClick={handleClick} {...hoverEvents}>
       <p className="submenu-title" {...clickEvents}>
         {title}
-        <Icon icon="angle-down" className="arrow-icon"/>
+        <Icon icon="angle-down" className="arrow-icon" />
       </p>
       {renderChildren()}
     </li>
