@@ -80,7 +80,7 @@ function App() {
         <h4>Ripple</h4>
         <div className="buttons">
           <span>Default Ripple:</span>
-          <Button>No Ripple Button</Button>
+          <Button>Ripple Button</Button>
           <span>Disabled Ripple:</span>
           <Button noRipple>No Ripple Button</Button>
         </div>
@@ -116,7 +116,7 @@ function App() {
           onSelect={(index) => {
             alert(index);
           }}
-          defaultOpenSubMenus={["2", "3"]}
+          // defaultOpenSubMenus={["2", "3"]}
         >
           <MenuItem>link 0 </MenuItem>
           <MenuItem>link 1 </MenuItem>
